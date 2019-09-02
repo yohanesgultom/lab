@@ -4,11 +4,15 @@
   "description": "code lab",
   "main": "index.js",
   "scripts": {
+    "dev": "http-server dist -p 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "lab"
   ],
   "author": "yohanes.gultom@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
 }
