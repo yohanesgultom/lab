@@ -1,7 +1,9 @@
 # Lab
 
 Random client-side (javascript) experiments wrapped as PWA:
+
 * Random password generator
+* XLSX Parser
 
 ## Setup
 
