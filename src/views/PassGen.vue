@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import store from "../store/index"
+
 function generatePassword(length, symbols=false) {
     let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     if (symbols) {
@@ -66,7 +68,7 @@ export default {
             if (this.password) {
                 this.$refs.password.$refs.input.select()
                 document.execCommand('copy')
-                alert('copied to clipboard')
+                store.commit('update', {alertMessage: 'copied to clipboard'})
             }
         }
     },

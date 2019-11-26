@@ -29,22 +29,58 @@
     <v-footer color="indigo" app>
       <span class="white--text">&copy; undefined, 2019</span>
     </v-footer>
+
+    <v-snackbar v-model="alertMessage" :timeout="3000">
+      {{ alertMessage }}
+      <v-btn color="pink" text @click="alertMessage = false">Close</v-btn>
+    </v-snackbar>
+
+    <v-overlay :value="overlay">
+      <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
+
   </v-app>
 </template>
 
 <script>
-  export default {
-    props: {
-      source: String,
-    },
-    data: () => ({
-      drawer: null,
-      title: 'Home',
-    }),
-    watch: {
-      $route(to) {
-        this.title = to.meta.title
+/* eslint-disable no-console */
+import store from "./store/index"
+export default {
+  props: {
+    source: String,
+  },    
+  data: () => ({
+    drawer: null,
+    title: 'Home',
+  }),
+  computed: {
+    overlay: {
+      get: function () {
+        return store.state.overlay
+      },
+      set: function (val) {
+        // only update when false (overlay closed)
+        if (!val) {
+          store.commit('update', {overlay: false})
+        }
       },
     },
-  }
+    alertMessage: {
+      get: function () {
+        return store.state.alertMessage
+      },
+      set: function (val) {
+        // only update when false (snackbar closed)
+        if (!val) {
+          store.commit('update', {alertMessage: null})
+        }
+      },
+    },
+  },
+  watch: {
+    $route(to) {
+      this.title = to.meta.title
+    },
+  },
+}
 </script>
