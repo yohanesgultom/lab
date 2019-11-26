@@ -3,13 +3,13 @@ module.exports = shipit => {
 
     shipit.initConfig({
         default: {
-            deployTo: '/home/yohanesgultom/lab/dist',
+            deployTo: '/home/user/lab/dist',
             repositoryUrl: 'https://github.com/yohanesgultom/lab.git',
         },
         production: {
-            deployTo: '/home/yohanesgultom/lab',
+            deployTo: '/home/user/lab',
             distDir: './dist',
-            servers: 'yohanesgultom@gultom',
+            servers: 'user@server',
             build: 'npm run build',
         }
     })

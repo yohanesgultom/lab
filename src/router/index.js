@@ -9,22 +9,28 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
-    meta: {title: 'Home'},
+    meta: {title: 'Home', icon: 'mdi-home'},
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta: {title: 'About'},
-  },
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+  //   meta: {title: 'About'},
+  // },
   {
     path: '/passgen',
     name: 'passgen',
     component: () => import(/* webpackChunkName: "passgen" */ '../views/PassGen.vue'),
-    meta: {title: 'Password Generator'},
+    meta: {title: 'Password Generator', icon: 'mdi-shield-key'},
+  },
+  {
+    path: '/xlsx',
+    name: 'xlsx',
+    component: () => import(/* webpackChunkName: "passgen" */ '../views/Xlsx.vue'),
+    meta: {title: 'XLSX Parser', icon: 'mdi-file'},
   }
 ]
 

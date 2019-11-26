@@ -1,5 +1,9 @@
 <template>
   <v-form>
+    <v-alert type="info">
+      Generate random password
+    </v-alert>
+
     <v-text-field
       v-model="length"
       type="number"
@@ -31,7 +35,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 function generatePassword(length, symbols=false) {
     let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     if (symbols) {
@@ -60,7 +63,6 @@ export default {
 
     methods: {
         copyToClipboard: function() {
-            console.log(this.$refs.password.$refs.input)
             if (this.password) {
                 this.$refs.password.$refs.input.select()
                 document.execCommand('copy')

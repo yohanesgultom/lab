@@ -2,20 +2,12 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app temporary>
       <v-list dense>
-        <v-list-item link :to="{path: '/'}">
+        <v-list-item v-for="route in $router.options.routes" :key="route.path" :to="route.path">
           <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
+            <v-icon>{{ route.meta.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link :to="{path: '/passgen'}">
-          <v-list-item-action>
-            <v-icon>mdi-shield-key</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Password Generator</v-list-item-title>
+            <v-list-item-title>{{ route.meta.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
