@@ -26,7 +26,7 @@
       </v-container>
     </v-content>
 
-    <v-footer color="indigo" app>
+    <v-footer color="indigo" class="d-flex justify-center" app>
       <span class="white--text">&copy; <a style="text-decoration: none; color: yellow;" href="https://yohanes.gultom.me">undefined</a> 2019</span>
     </v-footer>
 

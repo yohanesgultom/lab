@@ -28,6 +28,12 @@ const routes = [
     name: 'emoji',
     component: () => import(/* webpackChunkName: "emoji" */ '../views/Emoji.vue'),
     meta: {title: 'Emoji Converter', icon: 'mdi-face'},
+  },
+  {
+    path: '/ethereum',
+    name: 'ethereum',
+    component: () => import(/* webpackChunkName: "ethereum" */ '../views/Ethereum.vue'),
+    meta: {title: 'Ethereum Integration', icon: 'mdi-ethereum'},
   }
 ]
 
