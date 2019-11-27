@@ -27,7 +27,7 @@
     </v-content>
 
     <v-footer color="indigo" app>
-      <span class="white--text">&copy; undefined, 2019</span>
+      <span class="white--text">&copy; <a style="text-decoration: none; color: yellow;" href="https://yohanes.gultom.me">undefined</a> 2019</span>
     </v-footer>
 
     <v-snackbar v-model="alertMessage" :timeout="3000">

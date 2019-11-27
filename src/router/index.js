@@ -11,15 +11,6 @@ const routes = [
     component: Home,
     meta: {title: 'Home', icon: 'mdi-home'},
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  //   meta: {title: 'About'},
-  // },
   {
     path: '/passgen',
     name: 'passgen',
@@ -29,8 +20,14 @@ const routes = [
   {
     path: '/xlsx',
     name: 'xlsx',
-    component: () => import(/* webpackChunkName: "passgen" */ '../views/Xlsx.vue'),
+    component: () => import(/* webpackChunkName: "xlsx" */ '../views/Xlsx.vue'),
     meta: {title: 'XLSX Parser', icon: 'mdi-file'},
+  },
+  {
+    path: '/emoji',
+    name: 'emoji',
+    component: () => import(/* webpackChunkName: "emoji" */ '../views/Emoji.vue'),
+    meta: {title: 'Emoji Converter', icon: 'mdi-face'},
   }
 ]
 
