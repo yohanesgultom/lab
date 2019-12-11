@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const getDefaultState = () => {
   return {
+    online: navigator.onLine,
     alertMessage: false,
     overlay: false,
   }

@@ -27,6 +27,11 @@
     <v-app-bar app :color="themeColor" class="elevation-0">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-spacer></v-spacer>
+
+      <!-- online indicator -->
+      <v-icon v-show="!online" color="red">mdi-wifi-off</v-icon>
+      <v-icon v-show="online" color="green">mdi-wifi</v-icon>
     </v-app-bar>
 
     <v-content>
@@ -88,6 +93,14 @@ export default {
         }
       },
     },
+    online: {
+      get: function () {
+        return store.state.online
+      },
+      set: function () {
+        // do nothing
+      },
+    }
   },
   watch: {
     $route(to) {

@@ -11,6 +11,14 @@ Vue.config.productionTip = false
 new Vue({
   router,
   vuetify,
-  store,
-  render: h => h(App)
+  store,  
+  render: h => h(App),
+  created () {
+    window.addEventListener('offline', () => {
+      store.commit('update', {online: false})
+    })
+    window.addEventListener('online', () => {
+      store.commit('update', {online: true})
+    })
+  }
 }).$mount('#app')
