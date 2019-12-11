@@ -34,6 +34,12 @@ const routes = [
     name: 'ethereum',
     component: () => import(/* webpackChunkName: "ethereum" */ '../views/Ethereum.vue'),
     meta: {title: 'Ethereum Integration', icon: 'mdi-ethereum'},
+  },
+  {
+    path: '/linkedIn',
+    name: 'linkedIn',
+    component: () => import(/* webpackChunkName: "linkedIn" */ '../views/LinkedIn.vue'),
+    meta: {title: 'LinkedIn Share', icon: 'mdi-linkedin-box'},
   }
 ]
 

@@ -1,6 +1,17 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app temporary>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            Undefined
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Experimental apps
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+       <v-divider></v-divider>
       <v-list dense>
         <v-list-item v-for="route in $router.options.routes" :key="route.path" :to="route.path">
           <v-list-item-action>
@@ -13,7 +24,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app color="indigo" dark>
+    <v-app-bar app :color="themeColor" class="elevation-0">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-app-bar>
@@ -26,8 +37,8 @@
       </v-container>
     </v-content>
 
-    <v-footer color="indigo" class="d-flex justify-center" app>
-      <span class="white--text">&copy; <a style="text-decoration: none; color: yellow;" href="https://yohanes.gultom.me">undefined</a> 2019</span>
+    <v-footer :color="themeColor" class="d-flex justify-center" app>
+      <span>&copy; <a style="text-decoration: none;" href="https://yohanes.gultom.me">undefined</a> 2019</span>
     </v-footer>
 
     <v-snackbar v-model="alertMessage" :timeout="3000">
@@ -52,6 +63,7 @@ export default {
   data: () => ({
     drawer: null,
     title: 'Home',
+    themeColor: '#eee',
   }),
   computed: {
     overlay: {

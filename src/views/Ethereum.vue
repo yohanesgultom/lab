@@ -36,6 +36,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import Web3 from 'web3'
 import localforage from 'localforage'
 import store from "../store/index"
@@ -56,7 +57,6 @@ export default {
     }),
     methods: {
       getBalance: async function () {
-        /* eslint-disable no-console */
         // attempt to load address from local storage
         let tmp = await localforage.getItem('address')
         console.log('stored in local storage:', tmp)      
