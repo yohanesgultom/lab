@@ -1,9 +1,7 @@
 # Lab
 
-Random client-side (javascript) experiments wrapped as PWA:
+Random experiments deployed as Progressive Web Apps (vue-cli PWA). Check it live at https://lab.gultom.me
 
-* Random password generator
-* XLSX Parser
 
 ## Setup
 
