@@ -40,6 +40,12 @@ const routes = [
     name: 'linkedIn',
     component: () => import(/* webpackChunkName: "linkedIn" */ '../views/LinkedIn.vue'),
     meta: {title: 'LinkedIn Share', icon: 'mdi-linkedin-box'},
+  },
+  {
+    path: '/warta',
+    name: 'warta',
+    component: () => import(/* webpackChunkName: "warta" */ '../views/Warta.vue'),
+    meta: {title: 'Warta Search', icon: 'mdi-file-document-box-search'},
   }
 ]
 
