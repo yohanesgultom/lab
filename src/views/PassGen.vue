@@ -1,6 +1,11 @@
 <template>
   <v-form>
-    <v-alert type="info">
+      <v-alert
+          border="left"
+          colored-border
+          type="info"
+          elevation="2"
+      >
       Generate random password
     </v-alert>
 

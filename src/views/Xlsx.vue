@@ -1,6 +1,11 @@
 <template>
   <v-form>
-    <v-alert type="info">
+      <v-alert
+          border="left"
+          colored-border
+          type="info"
+          elevation="2"
+      >
       Parse uploaded xlsx file (per row) and display details (columns)
     </v-alert>
 

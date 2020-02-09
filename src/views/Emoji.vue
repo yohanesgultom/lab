@@ -1,6 +1,13 @@
 <template>
     <v-form>
-        <v-alert type="info">Convert emoji to unicode and vice versa</v-alert>
+        <v-alert
+            border="left"
+            colored-border
+            type="info"
+            elevation="2"
+        >
+            Convert emoji to unicode and vice versa
+        </v-alert>
 
         <v-textarea
             name="emoji"
