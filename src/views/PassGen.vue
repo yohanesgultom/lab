@@ -45,13 +45,30 @@ import store from "../store/index"
 function generatePassword(length, symbols=false) {
     let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     if (symbols) {
-        charset += "!@#$%&_="
+        charset += "!@#$%&_=-"
     }
     let retVal = ""
     for (let i = 0, n = charset.length; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * n))
+        let c = null
+        if (i == 0) {
+            // make sure there is one lowercase
+            c = charset.charAt(Math.floor(Math.random() * 26))
+        } else if (i == 1) {
+            // make sure there is one uppercase
+            c = charset.charAt(Math.floor(Math.random() * (52 - 26) + 26))
+        } else if (i == 2) {
+            // make sure there is one number
+            c = charset.charAt(Math.floor(Math.random() * (62 - 52) + 52))
+        } else if (i == 3 && symbols) {
+            // make sure there is one number
+            c = charset.charAt(Math.floor(Math.random() * (71 - 62) + 62))
+        } else {
+            c = charset.charAt(Math.floor(Math.random() * n))
+        }
+        retVal += c
     }
-    return retVal
+    // shuffle
+    return retVal.split('').sort(function(){return 0.5-Math.random()}).join('')
 }
 
 export default {

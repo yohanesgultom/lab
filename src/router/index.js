@@ -37,20 +37,6 @@ const routes = [{
         component: () =>
             import ( /* webpackChunkName: "ethereum" */ '../views/Ethereum.vue'),
         meta: { title: 'Ethereum Integration', icon: 'mdi-ethereum' },
-    },
-    {
-        path: '/linkedIn',
-        name: 'linkedIn',
-        component: () =>
-            import ( /* webpackChunkName: "linkedIn" */ '../views/LinkedIn.vue'),
-        meta: { title: 'LinkedIn Share', icon: 'mdi-linkedin' },
-    },
-    {
-        path: '/warta',
-        name: 'warta',
-        component: () =>
-            import ( /* webpackChunkName: "warta" */ '../views/Warta.vue'),
-        meta: { title: 'Warta Search', icon: 'mdi-file-find' },
     }
 ]
 
@@ -58,6 +44,11 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    router.app.$gtag.event(to.name)
+    next()
 })
 
 export default router

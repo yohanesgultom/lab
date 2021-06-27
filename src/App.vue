@@ -26,7 +26,7 @@
 
     <v-app-bar app :color="themeColor" class="elevation-0">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title><div>{{ title }}</div><div class="text-caption">Source code is available on <a href="https://github.com/yohanesgultom/lab">https://github.com/yohanesgultom/lab</a></div></v-toolbar-title>
       <v-spacer></v-spacer>
 
       <!-- online indicator -->
@@ -39,7 +39,7 @@
         <v-fade-transition mode="out-in">
           <router-view></router-view>
         </v-fade-transition>
-      </v-container>
+      </v-container>            
     </v-content>
 
     <v-footer :color="themeColor" class="d-flex justify-center" app>

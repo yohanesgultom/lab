@@ -1,6 +1,6 @@
 <template>
   <v-form>
-      <v-alert
+    <v-alert
           border="left"
           colored-border
           type="info"
@@ -55,14 +55,14 @@ import store from "../store/index"
 export default {
     data: function() {
       return {
-        rows: null,
+        rows: [],
         searchKey: null,
         selection: null,
       }
     },
     computed: {
       rowKeys: function() {
-          let keys = null
+          let keys = []
           if (this.rows && this.rows.length > 0) {
             keys = Object.keys(this.rows[0])
           }
@@ -72,7 +72,7 @@ export default {
     methods: {
         parseFile: function (f) {        
             store.commit('update', {overlay: true})
-            this.rows = null
+            this.rows = []
             this.searchKey = null
             this.selection = null
             let reader = new FileReader()
