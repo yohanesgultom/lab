@@ -4,3 +4,4 @@ bak/
 shipitfile.js
 .env.production
 .env.development
+.env
