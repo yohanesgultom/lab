@@ -1,6 +1,6 @@
 # Lab
 
-Random experiments deployed as Progressive Web Apps (vue-cli PWA). Check it live at https://lab.gultom.me
+Random experiments deployed as Progressive Web Apps (vue-cli PWA). Check it live at https://lab.gultom.id 
 
 
 ## Setup
