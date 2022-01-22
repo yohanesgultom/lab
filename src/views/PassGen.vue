@@ -1,42 +1,100 @@
 <template>
-  <v-form>
-      <v-alert
-          border="left"
-          colored-border
-          type="info"
-          elevation="2"
-      >
-      Generate random password
-    </v-alert>
+    <v-row>
+        <!-- form -->
+        <v-col cols="12" md="6">
+        <v-form>
+            <v-text-field
+            v-model="length"
+            type="number"
+            label="Length"
+            autofocus
+            required
+            ></v-text-field>
+            <v-checkbox
+            v-model="useSymbols"
+            label="Use symbols"
+            ></v-checkbox>
+            <v-textarea
+                ref="password"
+                name="password"
+                label="Password"
+                v-model="password"
+                counter
+                @click="copyToClipboard"
+                readonly
+            ></v-textarea>
+            <v-btn
+            color="success"
+            class="mr-4"
+            @click="getNewPassword"
+            >
+            <v-icon left>
+                mdi-play-circle
+            </v-icon>
+            Generate
+            </v-btn>    
+        </v-form>
+        </v-col>
 
-    <v-text-field
-      v-model="length"
-      type="number"
-      label="Length"
-      autofocus
-      required
-    ></v-text-field>
-    <v-checkbox
-      v-model="useSymbols"
-      label="Use symbols"
-    ></v-checkbox>
-    <v-textarea
-        ref="password"
-        name="password"
-        label="Password"
-        v-model="password"
-        counter
-        @click="copyToClipboard"
-        readonly
-    ></v-textarea>
-    <v-btn
-      color="success"
-      class="mr-4"
-      @click="forceRecompute++"
-    >
-      Generate
-    </v-btn>
-  </v-form>
+        <!-- history -->
+        <v-col cols="12" md="6">
+            <v-card
+                class="mx-auto"
+            >
+                <v-card-title>History</v-card-title>
+                <v-card-subtitle>
+                    <v-alert
+                    type="info"
+                    class="mt-4"
+                    >          
+                    This password is only stored in your browser local storage (nothing stored on server)
+                    </v-alert>
+                </v-card-subtitle>                
+                <v-card-actions>
+                <v-btn
+                    color="default"
+                    class="ml-4"
+                    @click="clearHistory"
+                >
+                <v-icon left>
+                    mdi-delete
+                </v-icon>
+                Clear All
+                </v-btn>
+                </v-card-actions>
+                <v-card-text>
+                    <v-list 
+                        shaped
+                        max-height="80vh"
+                        class="overflow-y-auto"
+                    >
+                        <v-list-item-group>
+                            <template v-for="(item, i) in history">
+                            <v-list-item
+                                :key="`item-${i}`"
+                                :value="item"
+                                active-class="deep-purple--text"
+                                @click="copyHistoryToClipboard(item)"
+                            >
+                                <template v-slot:default="{ active }">
+                                <v-list-item-action>
+                                    <v-checkbox
+                                    :input-value="active"
+                                    color="deep-purple accent-4"
+                                    ></v-checkbox>
+                                </v-list-item-action>
+                                <v-list-item-content>
+                                    <v-list-item-title v-text="item"></v-list-item-title>
+                                </v-list-item-content>
+                                </template>
+                            </v-list-item>
+                            </template>
+                        </v-list-item-group>
+                    </v-list>
+                </v-card-text>
+            </v-card>            
+        </v-col>
+    </v-row>  
 </template>
 
 <script>
@@ -75,24 +133,46 @@ export default {
     data: () => ({
         length: 12,
         useSymbols: true,
-        forceRecompute: 0,
+        password: null,
+        forceRefresh: 0,
     }),
 
     computed: {
-        password: function() {
-            this.forceRecompute
-            return this.length ? generatePassword(this.length, this.useSymbols) : ''
+        history: function() {
+            let history = []
+            this.forceRefresh
+            if (localStorage.getItem('history')) {
+                try {
+                    history = JSON.parse(localStorage.getItem('history'))
+                } catch(e) {
+                    localStorage.removeItem('history')
+                }
+            }
+            return history
         }
     },
 
     methods: {
+        getNewPassword: function() {
+            this.password = this.length ? generatePassword(this.length, this.useSymbols) : ''
+            const history = this.history
+            history.unshift(this.password)
+            localStorage.setItem('history', JSON.stringify(history))
+        },
         copyToClipboard: function() {
             if (this.password) {
-                this.$refs.password.$refs.input.select()
-                document.execCommand('copy')
+                navigator.clipboard.writeText(this.password)
                 store.commit('update', {alertMessage: 'copied to clipboard'})
             }
-        }
+        },
+        copyHistoryToClipboard: function(item) {
+            navigator.clipboard.writeText(item)
+            store.commit('update', {alertMessage: 'copied to clipboard'})
+        },
+        clearHistory: function() {
+            localStorage.setItem('history', JSON.stringify([]))
+            this.forceRefresh++
+        },
     },
 }
 </script>
