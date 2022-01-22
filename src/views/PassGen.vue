@@ -47,7 +47,7 @@
                     type="info"
                     class="mt-4"
                     >          
-                    This password is only stored in your browser local storage (nothing stored on server)
+                    These passwords are only stored in your browser local storage (nothing stored on server)
                     </v-alert>
                 </v-card-subtitle>                
                 <v-card-actions>
