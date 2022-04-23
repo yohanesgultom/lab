@@ -18,6 +18,13 @@ const routes = [{
         meta: { title: 'Password Generator', icon: 'mdi-shield-key' },
     },
     {
+        path: '/qrscan',
+        name: 'qrscan',
+        component: () =>
+            import ( /* webpackChunkName: "qrscan" */ '../views/QRScanner.vue'),
+        meta: { title: 'QR Scanner', icon: 'mdi-qrcode-scan' },
+    },
+    {
         path: '/xlsx',
         name: 'xlsx',
         component: () =>
