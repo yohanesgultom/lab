@@ -21,10 +21,10 @@
         "xlsx": "^0.17.5"
     },
     "devDependencies": {
-        "@vue/cli-plugin-babel": "^4.2.2",
-        "@vue/cli-plugin-eslint": "^4.2.2",
-        "@vue/cli-plugin-pwa": "^4.2.2",
-        "@vue/cli-service": "^4.5.15",
+        "@vue/cli-plugin-babel": "^5.0.8",
+        "@vue/cli-plugin-eslint": "^5.0.8",
+        "@vue/cli-plugin-pwa": "^5.0.8",
+        "@vue/cli-service": "^5.0.8",
         "axios": "^0.25.0",
         "babel-eslint": "^10.0.3",
         "eslint": "^5.16.0",
