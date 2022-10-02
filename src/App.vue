@@ -43,7 +43,7 @@
     </v-content>
 
     <v-footer :color="themeColor" class="d-flex justify-center" app>
-      <span>&copy; <a style="text-decoration: none;" href="https://yohanes.gultom.me">undefined</a> 2019</span>
+      <span>&copy; <a style="text-decoration: none;" href="https://yohanes.gultom.id">undefined</a> 2019</span>
     </v-footer>
 
     <v-snackbar v-model="alertMessage" :timeout="3000">

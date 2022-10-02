@@ -79,7 +79,7 @@ export default {
                 this.serviceNo = null
                 this.taskName = null
                 try {
-                    let res = await this.$http.get('https://lab.gultom.me/warta-api', {params: {query: this.query}})
+                    let res = await this.$http.get('https://lab.gultom.id/warta-api', {params: {query: this.query}})
                     // console.log(res.data)
                     this.postDate = res.data.post_date
                     this.originalText = res.data.original_text

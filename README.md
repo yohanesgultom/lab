@@ -2,7 +2,6 @@
 
 Random experiments deployed as Progressive Web Apps (vue-cli PWA). Check it live at https://lab.gultom.id 
 
-
 ## Setup
 
 Development:
