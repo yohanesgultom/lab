@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'home',
+  name: 'HomePage',
   computed: {
     appRoutes: function () {
       return this.$router.options.routes.filter(r => {

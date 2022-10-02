@@ -5,8 +5,11 @@ Random experiments deployed as Progressive Web Apps (vue-cli PWA). Check it live
 ## Setup
 
 Development:
+
 ```
-npm install
+docker run -t -d -v $(pwd):/home/app -w /home/app -p 8080:8080 --name lab node:16-buster
+docker exec -it lab bash
+npm i
 npm run serve
 ```
 

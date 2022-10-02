@@ -61,6 +61,8 @@
 import store from "../store/index"
 
 export default {
+    name: 'WartaSearch',
+
     data: () => ({
         query: '',
         postDate: null,

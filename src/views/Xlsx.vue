@@ -49,10 +49,12 @@
 </template>
 
 <script>
-import XLSX from 'xlsx'
-import store from "../store/index"
+import { read, utils } from 'xlsx'
+import store from '../store/index'
 
 export default {
+    name: 'XlsxParser',
+
     data: function() {
       return {
         rows: [],
@@ -78,9 +80,9 @@ export default {
             let reader = new FileReader()
             reader.onload = (e) => {
                 let data = e.target.result
-                let workbook = XLSX.read(data, {type: 'binary'})
+                let workbook = read(data, {type: 'binary'})
                 let sheet = workbook.SheetNames[0]
-                this.rows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]) 
+                this.rows = utils.sheet_to_row_object_array(workbook.Sheets[sheet]) 
                 store.commit('update', {overlay: false})
             }
             reader.readAsBinaryString(f)

@@ -103,7 +103,6 @@ export default {
             }
         },
         async onDecode(code) {
-            alert(code)
             store.commit('update', { alertMessage: `Saved to history: "${code}"` })
             this.camera = 'off'
             this.scanResult = code
@@ -126,20 +125,19 @@ export default {
             localStorage.setItem('scan_history', JSON.stringify([]))
             this.forceRefresh++
         },
-        paintOutline(detectedCodes, ctx) {
+        paintOutline: function (detectedCodes, ctx) {
             for (const detectedCode of detectedCodes) {
                 const [firstPoint, ...otherPoints] = detectedCode.cornerPoints
-
-                ctx.strokeStyle = "red";
-
-                ctx.beginPath();
-                ctx.moveTo(firstPoint.x, firstPoint.y);
+                ctx.strokeStyle = 'green'
+                ctx.lineWidth = 5
+                ctx.beginPath()
+                ctx.moveTo(firstPoint.x, firstPoint.y)
                 for (const { x, y } of otherPoints) {
-                    ctx.lineTo(x, y);
+                    ctx.lineTo(x, y)
                 }
-                ctx.lineTo(firstPoint.x, firstPoint.y);
-                ctx.closePath();
-                ctx.stroke();
+                ctx.lineTo(firstPoint.x, firstPoint.y)
+                ctx.closePath()
+                ctx.stroke()
             }
         },
     },

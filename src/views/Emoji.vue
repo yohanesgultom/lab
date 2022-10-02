@@ -66,6 +66,9 @@ const parseUnicode = function(str) {
 };
 
 export default {
+
+    name: 'EmojiConverter',
+
     data: () => ({
         emoji: "",
         unicode: ""

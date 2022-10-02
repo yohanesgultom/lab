@@ -56,10 +56,14 @@ localforage.config({
 })
 
 export default {
+
+    name: 'EthereumWallet',
+
     data: () => ({
         address: '',
         balance: null,
     }),
+
     methods: {
       getBalance: async function () {
         // attempt to load address from local storage
